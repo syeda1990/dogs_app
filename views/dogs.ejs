@@ -1,0 +1,22 @@
+<div>
+    <ul data-testid="dogsList">
+        <% for (let i = 0; i < data.length; i++) {  %>
+        <% const dog = data[i] %>
+            <li>
+                <%= dog.name %>
+            </li>
+        <%} %>
+
+        <br />
+        
+        <form method="POST" action="/dogs">
+            <input placeholder="name" name="name" type="text" />
+            <br />
+            <input placeholder="nick" name="nick" type="text" />
+            <br />
+            <input placeholder="age" name="age" type="number" />
+            <br />
+            <button data-testid="save" type="submit">Save dog</button>
+        </form>
+    </ul>
+</div>
