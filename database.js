@@ -45,4 +45,15 @@ function createDog(name, age, nick, callback) {
     })
 }
 
-module.exports = { getAllDogs, createDog };
+
+function deleteDog(id,callback){
+    getConnection().execute('DELETE FROM dogs WHERE id=?',[id],function(err,result){
+         if (err) {
+            callback(err, null);
+        }
+        else {
+                callback(null, result);
+            }
+    })
+}
+module.exports = { getAllDogs, createDog, deleteDog };

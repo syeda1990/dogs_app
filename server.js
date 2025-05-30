@@ -23,4 +23,13 @@ server.post("/dogs", function (request, response) {
     })
 })
 
+//deleting dog
+server.get("/delete/:id",function(request,response){
+  const id=request.params.id;
+  database.deleteDog(id,function(err,rows){
+    if (err) throw err;
+    response.redirect("/dogs");
+  })
+})
+
 module.exports = server;

@@ -15,12 +15,20 @@ test('creating a dog',async ({page})=>{
     const nick=page.getByPlaceholder("nick");
     const age=page.getByPlaceholder("age");
     const btn=page.getByTestId("save");
-    await name.fill("puppy");
+    await name.fill("tester");
     await nick.fill("puppyy");
     await age.fill("23");
     await btn.click();
 
     await page.waitForURL('**/dogs');
-    await expect(page.getByTestId("dogsList")).toContainText('puppy');
+    await expect(page.getByTestId("dogsList")).toContainText('tester');
 
 }) 
+
+test('deleting the tester',async({page})=>{
+    await page.goto('http://localhost:3000/dogs')
+    const testerRow = page.locator('[data-testid="dog-row"]', { hasText: 'tester' });
+    await testerRow.getByTestId('delete').click();
+    await expect(page.getByTestId("dogsList")).not.toContainText('tester')
+
+})

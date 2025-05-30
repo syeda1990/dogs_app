@@ -2,8 +2,9 @@
     <ul data-testid="dogsList">
         <% for (let i = 0; i < data.length; i++) {  %>
         <% const dog = data[i] %>
-            <li>
+            <li data-testid="dog-row">
                 <%= dog.name %>
+                <a href="/delete/<%=dog.id%>" data-testid="delete"><button>Delete Dog</button></a>
             </li>
         <%} %>
 

@@ -52,3 +52,13 @@ describe("Dog routes", () => {
     expect(response.text).toContain("Fido");
   });
 });
+
+//DELETING THE DOG  
+test("GET/delete/:id deletes user and redirects",async () => {
+    database.deleteDog.mockImplementation((id, cb) => cb(null));
+
+    const response = await request(app).get("/delete/1");
+
+    expect(response.statusCode).toBe(302);
+    expect(response.headers.location).toBe("/dogs");
+  });
