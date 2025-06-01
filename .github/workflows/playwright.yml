@@ -17,8 +17,11 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Start server
-      run: npm run start &    # Change to your actual start command
+    - name: Start server in background with logs
+      run: |
+       npm run start > server.log 2>&1 &
+       sleep 5
+       cat server.log
       env:
         NODE_ENV: test
     - name: Show running processes
