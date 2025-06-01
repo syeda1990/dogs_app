@@ -6,6 +6,12 @@ const server = express();
 server.set('view engine', 'ejs');
 server.use(express.urlencoded({ extended: true }));
 
+// simply added for yml 
+server.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
+
 // list all dogs in the database
 server.get("/dogs", function (request, response) {
    database.getAllDogs(function (err, rows) {
