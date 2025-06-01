@@ -21,6 +21,8 @@ jobs:
       run: npm run start &    # Change to your actual start command
       env:
         NODE_ENV: test
+    - name: Show running processes
+      run: ps aux
     - name: Wait for server to be ready
       run: npx wait-on http://localhost:3000 --timeout 30000
     - name: Run Playwright tests
