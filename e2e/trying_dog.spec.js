@@ -1,5 +1,15 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
+// doing this for yml 
+export default defineConfig({
+  webServer: {
+    command: 'npm run dev', // or 'npm start' depending on your project
+    url: 'http://localhost:3000',
+    reuseExistingServer: !process.env.CI, // avoids duplicate server in local runs
+    timeout: 120 * 1000 // optional: 2 minutes timeout
+  },
+  // other config...
+});
 
 test('displays dogs in the list', async ({ page }) => {
   await page.goto('http://localhost:3000/dogs');
