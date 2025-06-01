@@ -1,6 +1,6 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
-// doing this for yml 
+
 export default defineConfig({
   webServer: {
     command: 'npm run dev', // or 'npm start' depending on your project
