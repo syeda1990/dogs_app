@@ -47,12 +47,14 @@ jobs:
         done
         echo "Creating table and inserting sample data..."
         mysql -h 127.0.0.1 -P 3306 -u root -p'route' testdb <<EOF
-          CREATE TABLE IF NOT EXISTS dogs (
-            id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            breed VARCHAR(255),
-            age INT
-          );
-          INSERT INTO dogs (name, breed, age) VALUES
-            ('Buddy', 'Golden Retriever', 3),
-
+CREATE TABLE IF NOT EXISTS dogs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  breed VARCHAR(255),
+  age INT
+);
+INSERT INTO dogs (name, breed, age) VALUES
+  ('Buddy', 'Golden Retriever', 3),
+  ('Max', 'Labrador', 5),
+  ('Bella', 'Poodle', 2);
+EOF
