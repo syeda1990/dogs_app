@@ -19,9 +19,13 @@ jobs:
       run: npx playwright install --with-deps
     - name: Start server in background with logs
       run: |
-       npm run start > server.log 2>&1 &
-       sleep 5
-       cat server.log
+       nohup npm run start &> server.log &
+        sleep 5
+        cat server.log
+        - name: Check server log for errors
+        run: cat server.log
+
+
       env:
         NODE_ENV: test
     - name: Show running processes
